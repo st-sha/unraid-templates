@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>CubeMan</Name>
+  <Repository>ghcr.io/st-sha/cubeman:latest</Repository>
+  <Registry>https://ghcr.io/st-sha/cubeman</Registry>
+  <Branch>
+    <Tag>latest</Tag>
+    <TagDescription>Latest stable release</TagDescription>
+  </Branch>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/st-sha/cubeman/issues</Support>
+  <Overview>
+    MtG Cube Draft Tournament Manager. Run Swiss tournaments, photograph decklists for automatic card recognition via AI, manage cubes, track player stats. Includes Discord bot integration and a full benchmark system for vision model evaluation.
+  </Overview>
+  <Category>Productivity: Tools:</Category>
+  <Icon>https://raw.githubusercontent.com/st-sha/cubeman/main/apps/web/public/favicon.svg</Icon>
+  <WebUI>http://[IP]:[PORT:5172]/</WebUI>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <DateInstalled/>
+  <Description>
+    CubeMan — MtG Cube Draft Tournament App. Photo-of-decklist to structured card list via cloud AI + Scryfall matching. Swiss tournaments with DCI tiebreakers, player stats, cube management, Discord bot, and a comprehensive vision model benchmark system.
+  </Description>
+
+  <!-- Port -->
+  <Config Name="Web UI Port" Target="5172" Default="5172" Mode="tcp" Description="Web interface port" Type="Port" Display="always" Required="true" Mask="false">5172</Config>
+
+  <!-- Data volume -->
+  <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/cubeman" Mode="rw" Description="Persistent data: databases, uploaded images, Scryfall archive (~4GB)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/cubeman</Config>
+
+  <!-- Azure OpenAI (for cloud card recognition) -->
+  <Config Name="Vision Provider" Target="VISION_PROVIDER" Default="azure-openai" Description="Cloud vision provider for card recognition" Type="Variable" Display="always" Required="false" Mask="false">azure-openai</Config>
+  <Config Name="Azure OpenAI Endpoint" Target="AZURE_OPENAI_ENDPOINT" Default="" Description="Azure AI Foundry endpoint URL" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Azure OpenAI Key" Target="AZURE_OPENAI_KEY" Default="" Description="Azure AI Foundry API key" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+
+  <!-- Discord bot -->
+  <Config Name="Discord Bot Token" Target="DISCORD_BOT_TOKEN" Default="" Description="Discord bot token — enables automatic decklist detection in Discord channels" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Discord Channel IDs" Target="DISCORD_CHANNEL_IDS" Default="" Description="Comma-separated channel IDs to monitor (empty = all channels)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+
+  <!-- Public URL -->
+  <Config Name="Public URL" Target="PUBLIC_URL" Default="http://localhost:5172" Description="Public URL for deck page links in Discord embeds (e.g. https://cubeman.yourserver.com)" Type="Variable" Display="always" Required="false" Mask="false">http://localhost:5172</Config>
+
+  <!-- Advanced settings -->
+  <Config Name="Auth Mode" Target="AUTH_MODE" Default="open" Description="Authentication mode: open (no login), optional, required" Type="Variable" Display="advanced" Required="false" Mask="false">open</Config>
+  <Config Name="Log Level" Target="LOG_LEVEL" Default="info" Description="Logging verbosity: fatal, error, warn, info, debug, trace" Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+  <Config Name="Scryfall Sync Interval" Target="SCRYFALL_SYNC_INTERVAL_HOURS" Default="6" Description="Hours between Scryfall metadata sync checks" Type="Variable" Display="advanced" Required="false" Mask="false">6</Config>
+</Container>
