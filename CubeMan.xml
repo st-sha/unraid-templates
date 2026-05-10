@@ -8,7 +8,7 @@
     <TagDescription>Latest stable release</TagDescription>
   </Branch>
   <Network>bridge</Network>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/st-sha/cubeman/issues</Support>
   <Overview>
@@ -33,6 +33,8 @@
   <Config Name="Vision Provider" Target="VISION_PROVIDER" Default="azure-openai" Description="Cloud vision provider for card recognition" Type="Variable" Display="always" Required="false" Mask="false">azure-openai</Config>
   <Config Name="Azure OpenAI Endpoint" Target="AZURE_OPENAI_ENDPOINT" Default="" Description="Azure AI Foundry endpoint URL" Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="Azure OpenAI Key" Target="AZURE_OPENAI_KEY" Default="" Description="Azure AI Foundry API key" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Azure OpenAI API Version" Target="AZURE_OPENAI_API_VERSION" Default="2025-04-01-preview" Description="Azure OpenAI API version" Type="Variable" Display="advanced" Required="false" Mask="false">2025-04-01-preview</Config>
+  <Config Name="Default Model" Target="AZURE_OPENAI_DEPLOYMENT" Default="gpt-5.4" Description="Default Azure deployment name for card recognition" Type="Variable" Display="advanced" Required="false" Mask="false">gpt-5.4</Config>
 
   <!-- Discord bot -->
   <Config Name="Discord Bot Token" Target="DISCORD_BOT_TOKEN" Default="" Description="Discord bot token — enables automatic decklist detection in Discord channels" Type="Variable" Display="always" Required="false" Mask="true"></Config>
