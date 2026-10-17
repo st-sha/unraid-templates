@@ -1,0 +1,11 @@
+{
+  "disabledMcpServers": [
+    "HomeAssistant",
+    "azure",
+    "microsoft/playwright-mcp",
+    "workiq",
+    "flowagent",
+    "microsoft-learn",
+    "powerbi-modeling-mcp"
+  ]
+}
