@@ -1,0 +1,5 @@
+# agent-standards
+.env
+.env.*
+!.env.example
+.github/copilot/settings.local.json
