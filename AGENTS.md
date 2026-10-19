@@ -1,4 +1,4 @@
-<!-- agent-standards v1.1-draft, profile: light -->
+<!-- agent-standards v1.3, profile: light -->
 # unraid-templates
 
 Rules for coding agents working in this repo. They add to Steven's personal rules from the
@@ -22,15 +22,23 @@ reads the template XML files from the default branch, so `main` is live.
 
 - Work in a session worktree on a branch. Never edit the main checkout.
 - Commit in small, logical steps. Stage files by name.
-- Push and merge: push the branch to origin and open a PR on st-sha/unraid-templates. Steven
-  merges. Merging to `main` publishes the templates to Community Apps.
+- Push and merge: push the branch and open a pull request on st-sha/unraid-templates. Once every
+  merge gate below passes, merge it yourself with a merge commit (`gh pr merge <n> --merge`),
+  without asking. If a gate fails, push, report back and stop. Never push to `main` directly.
+  Merging to `main` publishes the templates to Community Apps.
+- Merge gates: the unit of work is done (no partial work, no known failure); the closeout is in
+  the branch; the branch is up to date with `main` and check passes on that state; CI is green
+  when it runs on the branch; the diff touches nothing on the Safety "ask first" list. Never merge
+  red, bypass required checks or branch protection, or force push.
 - Don't rename, move or reformat template XML. Any new file that is not a template must not end
   in `.xml`, or Community Apps may read it as one.
 
 ## Safety
 
-- Ask Steven first before: merging or pushing to `main`; renaming, moving or deleting a template;
-  changing a template's image, ports or paths; adding a new `.xml` file; adding CI.
+- Ask Steven first before: pushing to `main` directly; changing what a published template installs
+  or runs (its image, tag, registry, network, privileged flag, shell, extra parameters, WebUI, or
+  any `Config` port, path or variable, with its default and mask); renaming, moving or deleting a
+  template; adding a new `.xml` file; adding CI.
 - Secrets never go in the repo. Local values live in `.env`, which git ignores.
 
 ## Deviations
