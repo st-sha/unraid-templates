@@ -37,8 +37,11 @@ reads the template XML files from the default branch, so `main` is live.
 
 - Ask Steven first before: pushing to `main` directly; changing what a published template installs
   or runs (its image, tag, registry, network, privileged flag, shell, extra parameters, WebUI, or
-  any `Config` port, path or variable, with its default and mask); renaming, moving or deleting a
-  template; adding a new `.xml` file; adding CI.
+  any `Config` port, path or variable, with its default and mask); changing or adding any URL in a
+  template (such as `TemplateURL`, `Icon`, `Support` or `Project`); adding a new element to a
+  template; renaming, moving or deleting a template; adding a new `.xml` file; adding CI; changing
+  the repo's GitHub settings or the `Protect main` ruleset; loosening this file's Safety list or
+  merge rules.
 - Secrets never go in the repo. Local values live in `.env`, which git ignores.
 
 ## Deviations
